@@ -69,7 +69,7 @@ public class BotService {
         Optional<Project> byTitleId = projectRepository.findByTitleId(id);
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(currentUser.getChatId());
-        if (byTitleId.isEmpty()) {
+        if (!byTitleId.isPresent()) {
             sendMessage.setText("project not found");
             return sendMessage;
         }
